@@ -1,0 +1,10 @@
+{
+  "protocol": "mongodb",
+  "host": "mongodb.local",
+  "port": 27017,
+  "database": "analytics",
+  "username": "mongo_user",
+  "password": "mongo_password",
+  "auth_source": "admin",
+  "description": "MongoDB source connector template"
+}

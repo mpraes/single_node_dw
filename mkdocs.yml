@@ -6,7 +6,10 @@ nav:
   - Início: index.md
   - Instalação: setup/installation.md
   - Arquitetura: setup/architecture.md
-  - Guia de Criar Conectores: guides/new-connector.md
+  - Guias:
+      - Criar Conectores: guides/new-connector.md
+      - Pipeline Runner: guides/pipeline.md
+  - Próximos Passos: next-steps.md
 
 markdown_extensions:
   - codehilite

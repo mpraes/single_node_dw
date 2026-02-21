@@ -1,0 +1,9 @@
+{
+  "protocol": "postgres",
+  "host": "source-postgres.local",
+  "port": 5432,
+  "database": "source_db",
+  "username": "pg_user",
+  "password": "pg_password",
+  "description": "PostgreSQL source connector template"
+}

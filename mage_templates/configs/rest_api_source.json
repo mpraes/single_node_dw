@@ -1,0 +1,10 @@
+{
+  "protocol": "http",
+  "base_url": "https://api.example.com",
+  "timeout_seconds": 30,
+  "client_library": "requests",
+  "headers": {
+    "User-Agent": "SingleNodeDW-ETL/1.0"
+  },
+  "description": "REST API source connector template"
+}

@@ -33,6 +33,10 @@ A arquitetura é dividida em três blocos claros:
    - Camada final de armazenamento analítico estruturado.
    - Organiza dados para consumo por BI, relatórios operacionais e análises de negócio.
 
+4. **Pipeline Orchestrator & CLI**
+   - Motor de execução que coordena o fluxo fim-a-fim (Extração -> Staging -> Carga).
+   - CLI unificada para execução de pipelines, testes de conexão e monitoramento via logs de auditoria.
+
 ## Resultado esperado
 
 Com essa abordagem, o framework oferece uma base pragmática para ETL em ambiente single-node: implementação rápida, operação estável e custo controlado.

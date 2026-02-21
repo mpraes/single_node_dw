@@ -64,18 +64,42 @@ Edite os valores conforme seu ambiente. Prefixos importantes:
 
 ## 6) Validar instalação com testes (`pytest`)
 
-No diretório `single_node_dw/`, execute:
+No diretório `single_node_dw/`, você pode rodar todos os testes ou suítes específicas:
 
 ```bash
-uv run --with pytest --with-requirements etl/requirements.txt pytest -q tests/test_connections.py
+# Todos os testes (Conectores, Staging, Pipeline, CLI)
+make make-tests-all
+
+# Apenas conectores
+make make-tests-conn
+
+# Apenas staging e carga (loader/audit)
+make make-tests-staging
+
+# Apenas orquestrador de pipeline
+make make-tests-pipeline
 ```
 
-Para executar um teste específico:
+## 7) Primeiro Pipeline (Quick Start)
+
+Para testar o fluxo completo usando o CLI:
 
 ```bash
-uv run --with pytest --with-requirements etl/requirements.txt pytest -q tests/test_connections.py -k <nome_do_teste>
+# 1. Subir infraestrutura (Docker)
+make infra-up
+
+# 2. Testar conexão com o DW
+make test-dw
+
+# 3. Executar um pipeline de exemplo (HTTP -> DW)
+uv run --with-requirements etl/requirements.txt python -m etl.cli run \
+  --config etl/connections/examples/http_connector.example.json \
+  --query "/users" \
+  --source api_test \
+  --table stg_users_test \
+  --lake ./lake
 ```
 
-## 7) Troubleshooting rápido
+## 8) Troubleshooting rápido
 
 Se ocorrer `ModuleNotFoundError` na coleta dos testes, repita os comandos com `--with-requirements etl/requirements.txt` (conforme acima).

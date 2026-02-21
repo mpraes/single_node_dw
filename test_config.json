@@ -1,0 +1,4 @@
+{
+  "protocol": "http",
+  "base_url": "https://httpbin.org"
+}

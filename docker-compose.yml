@@ -32,8 +32,20 @@ services:
       PGUSER: ${PGUSER:-dw_user}
       PGPASSWORD: ${PGPASSWORD:-dw_password}
       PGDATABASE: ${PGDATABASE:-dw_db}
+      # ETL Framework Environment
+      DW_HOST: ${DW_HOST:-postgres}
+      DW_PORT: ${DW_PORT:-5432}
+      DW_DATABASE: ${DW_DATABASE:-dw_db}
+      DW_USERNAME: ${DW_USERNAME:-dw_user}
+      DW_PASSWORD: ${DW_PASSWORD:-dw_password}
+      PYTHONPATH: /home/src:/app/etl
     volumes:
       - mage_data:/home/src
+      # Mount ETL framework code into Mage container
+      - ./etl:/app/etl:ro
+      - ./examples:/app/examples:ro
+      - ./lake:/app/lake
+      - ./.env:/app/.env:ro
     depends_on:
       postgres:
         condition: service_healthy
