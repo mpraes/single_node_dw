@@ -1,0 +1,11 @@
+protocol: kafka
+bootstrap_servers: localhost:9092
+topic: orders
+group_id: etl-consumer
+security_protocol: PLAINTEXT
+auto_offset_reset: earliest
+enable_auto_commit: false
+lake_path: ./lake
+max_messages: 500
+max_wait_seconds: 5.0
+poll_timeout_seconds: 1.0

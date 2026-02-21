@@ -1,0 +1,5 @@
+host: postgres.local
+port: 5432
+database: analytics
+username: pg_user
+password: pg_password

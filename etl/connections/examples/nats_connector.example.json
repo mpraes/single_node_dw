@@ -1,0 +1,12 @@
+{
+  "protocol": "nats",
+  "servers": [
+    "nats://localhost:4222"
+  ],
+  "subject": "events.orders",
+  "queue_group": "etl-workers",
+  "lake_path": "./lake",
+  "max_messages": 500,
+  "max_wait_seconds": 5.0,
+  "poll_timeout_seconds": 1.0
+}

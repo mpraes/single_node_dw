@@ -1,0 +1,8 @@
+protocol: ftp
+host: ftp.example.com
+port: 21
+username: ftp_user
+password: ftp_password
+passive_mode: true
+remote_base_path: /exports
+lake_path: ./lake

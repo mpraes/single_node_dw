@@ -1,0 +1,13 @@
+{
+  "protocol": "gsheets",
+  "service_account_info": {
+    "type": "service_account",
+    "project_id": "my-project",
+    "private_key_id": "replace-me",
+    "private_key": "-----BEGIN PRIVATE KEY-----\\nreplace-me\\n-----END PRIVATE KEY-----\\n",
+    "client_email": "service-account@my-project.iam.gserviceaccount.com",
+    "client_id": "1234567890",
+    "token_uri": "https://oauth2.googleapis.com/token"
+  },
+  "spreadsheet_id": "your_spreadsheet_id"
+}

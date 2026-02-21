@@ -1,0 +1,6 @@
+{
+  "protocol": "newprotocol",
+  "endpoint": "https://api.example.com",
+  "api_key": "your-api-key",
+  "timeout_seconds": 30
+}

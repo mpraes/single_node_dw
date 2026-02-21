@@ -1,0 +1,9 @@
+{
+  "protocol": "ssh",
+  "host": "sftp.example.com",
+  "port": 22,
+  "username": "ssh_user",
+  "password": "ssh_password",
+  "remote_base_path": "/incoming",
+  "lake_path": "./lake"
+}

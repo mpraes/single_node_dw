@@ -1,0 +1,7 @@
+{
+  "host": "oracle.local",
+  "port": 1521,
+  "service_name": "XE",
+  "username": "oracle_user",
+  "password": "oracle_password"
+}

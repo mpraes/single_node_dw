@@ -1,0 +1,11 @@
+protocol: amqp
+host: rabbitmq.local
+port: 5672
+username: guest
+password: guest
+virtual_host: /
+queue: orders
+lake_path: ./lake
+max_messages: 500
+max_wait_seconds: 5.0
+poll_timeout_seconds: 1.0

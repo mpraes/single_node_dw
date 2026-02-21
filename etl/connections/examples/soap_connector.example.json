@@ -1,0 +1,6 @@
+{
+  "protocol": "soap",
+  "wsdl_url": "https://example.com/service?wsdl",
+  "username": "soap_user",
+  "password": "soap_password"
+}

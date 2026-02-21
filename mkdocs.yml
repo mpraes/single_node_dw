@@ -1,0 +1,13 @@
+site_name: ETL Framework
+theme:
+  name: material
+
+nav:
+  - Início: index.md
+  - Instalação: setup/installation.md
+  - Arquitetura: setup/architecture.md
+  - Guia de Criar Conectores: guides/new-connector.md
+
+markdown_extensions:
+  - codehilite
+  - admonition

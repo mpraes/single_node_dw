@@ -1,0 +1,20 @@
+# Environment files (keep template tracked)
+.env
+.env.*
+!.env.example
+
+# Local connector config files with secrets
+*.local.json
+*.local.yaml
+*.local.yml
+
+# Optional local secrets naming
+*.secrets.json
+*.secrets.yaml
+*.secrets.yml
+
+# Terraform
+infra/.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl

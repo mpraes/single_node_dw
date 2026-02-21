@@ -1,0 +1,6 @@
+{
+  "protocol": "webdav",
+  "base_url": "https://webdav.example.com",
+  "username": "webdav_user",
+  "password": "webdav_password"
+}

@@ -1,0 +1,7 @@
+protocol: mongodb
+host: mongodb.example.com
+port: 27017
+username: mongo_user
+password: mongo_password
+database: analytics
+auth_source: admin

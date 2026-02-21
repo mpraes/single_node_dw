@@ -1,0 +1,7 @@
+{
+  "protocol": "http",
+  "base_url": "https://api.example.com",
+  "token": "api_token_value",
+  "timeout_seconds": 30,
+  "client_library": "requests"
+}

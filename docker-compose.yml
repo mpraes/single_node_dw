@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: dw_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-dw_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dw_password}
+      POSTGRES_DB: ${POSTGRES_DB:-dw_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dw_internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mage:
+    image: mageai/mageai:latest
+    container_name: dw_mage
+    restart: unless-stopped
+    ports:
+      - "6789:6789"
+    command: /app/run_app.sh mage start project
+    environment:
+      PGHOST: ${PGHOST:-postgres}
+      PGPORT: ${PGPORT:-5432}
+      PGUSER: ${PGUSER:-dw_user}
+      PGPASSWORD: ${PGPASSWORD:-dw_password}
+      PGDATABASE: ${PGDATABASE:-dw_db}
+    volumes:
+      - mage_data:/home/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - dw_internal
+
+volumes:
+  postgres_data:
+  mage_data:
+
+networks:
+  dw_internal:
+    driver: bridge

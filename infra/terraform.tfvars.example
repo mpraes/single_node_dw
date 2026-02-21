@@ -1,0 +1,22 @@
+# Copie este arquivo para terraform.tfvars e ajuste os valores conforme necessário.
+# Exemplo:
+# cp terraform.tfvars.example terraform.tfvars
+
+project_name = "single-node-dw"
+
+# Escolha o provedor alvo: "aws" ou "azure"
+cloud_provider = "aws"
+
+# =========================
+# Configuração AWS
+# =========================
+aws_region        = "us-east-1"
+aws_instance_type = "t3.medium"
+aws_ssh_username  = "ec2-user"
+
+# =========================
+# Configuração Azure
+# =========================
+azure_location     = "eastus"
+azure_vm_size      = "Standard_B2s"
+azure_ssh_username = "azureuser"
