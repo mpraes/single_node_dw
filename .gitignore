@@ -1,3 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
 # Environment files (keep template tracked)
 .env
 .env.*
@@ -14,7 +39,62 @@
 *.secrets.yml
 
 # Terraform
-infra/.terraform/
+**/.terraform/
+**/.terraform.lock.hcl
 *.tfstate
 *.tfstate.backup
-.terraform.lock.hcl
+*.tfvars
+*.tfvars.bak
+!*.tfvars.example
+terraform.tfplan
+terraform.tfplan.json
+
+# Terraform crash log files
+crash.log
+crash.*.log
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform CLI config files
+.terraformrc
+terraform.rc
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Testing and Coverage
+.coverage
+.pytest_cache/
+.tox/
+.coverage.*
+htmlcov/
+.nyc_output
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+
+# Data and Lake files (keep examples)
+lake/
+!lake/.gitkeep
+
+# Documentation build
+docs/site/
