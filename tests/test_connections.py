@@ -24,8 +24,8 @@ from connections.sources.data_contract import IngestionResult  # noqa: E402
 from connections.sources.factory import create_connector, load_connector_config  # noqa: E402
 from connections.sources.ftp.connector import FTPConnector  # noqa: E402
 from connections.sources.ftp.webdav_connector import WebDAVConnector  # noqa: E402
-from connections.sources.http.connector import HTTPConnector  # noqa: E402
-from connections.sources.http.soap_connector import SOAPConnector  # noqa: E402
+from connections.sources.http.rest.connector import HTTPConnector  # noqa: E402
+from connections.sources.http.soap.connector import SOAPConnector  # noqa: E402
 from connections.sources.http import rest  # noqa: E402
 from connections.sources.saas.gsheets.connector import GSheetsConnector  # noqa: E402
 from connections.sources.nosql.cassandra import get_cassandra_session, test_cassandra_connection as cassandra_connection_healthcheck  # noqa: E402
@@ -430,7 +430,7 @@ class RestConnectionTests(unittest.TestCase):
             captured["cache_config"] = cache_config
             return factory()
 
-        with patch.object(rest, "get_or_create_session", side_effect=fake_cache):
+        with patch("connections.sources.http.rest.connector.get_or_create_session", side_effect=fake_cache):
             session = rest.get_rest_session(
                 base_url="https://example.com",
                 token="abc123",
@@ -455,7 +455,7 @@ class RestConnectionTests(unittest.TestCase):
             request=MagicMock(return_value=response),
         )
 
-        with patch.object(rest, "get_rest_session", return_value=session):
+        with patch("connections.sources.http.rest.connector.get_rest_session", return_value=session):
             returned = rest.request_rest("get", "/health", params={"x": 1}, headers={"C": "D"})
 
         self.assertIs(returned, response)
@@ -473,14 +473,14 @@ class RestConnectionTests(unittest.TestCase):
     def test_test_rest_connection_status_check(self):
         ok_response = SimpleNamespace(status_code=200)
 
-        with patch.object(rest, "request_rest", return_value=ok_response):
+        with patch("connections.sources.http.rest.connector.request_rest", return_value=ok_response):
             self.assertTrue(rest.test_rest_connection())
 
         not_ok_response = SimpleNamespace(status_code=500)
-        with patch.object(rest, "request_rest", return_value=not_ok_response):
+        with patch("connections.sources.http.rest.connector.request_rest", return_value=not_ok_response):
             self.assertFalse(rest.test_rest_connection())
 
-        with patch.object(rest, "request_rest", side_effect=RuntimeError("fail")):
+        with patch("connections.sources.http.rest.connector.request_rest", side_effect=RuntimeError("fail")):
             self.assertFalse(rest.test_rest_connection())
             with self.assertRaises(RuntimeError):
                 rest.test_rest_connection(raise_on_error=True)
@@ -493,7 +493,7 @@ class ProtocolConnectorTests(unittest.TestCase):
         mock_response.text = '{"ok": true}'
         mock_response.headers = {"Content-Type": "application/json"}
 
-        with patch("connections.sources.http.connector.requests.Session") as mock_session_ctor:
+        with patch("connections.sources.http.rest.connector.requests.Session") as mock_session_ctor:
             session = MagicMock()
             session.get.return_value = mock_response
             mock_session_ctor.return_value = session

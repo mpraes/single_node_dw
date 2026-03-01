@@ -10,11 +10,3 @@ class HTTPConfig(BaseModel):
     token: str | None = None
     timeout_seconds: int = Field(default=30, ge=1)
     client_library: Literal["requests", "httpx"] = "requests"
-
-
-class SOAPConfig(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-
-    wsdl_url: AnyHttpUrl
-    username: str | None = None
-    password: str | None = None

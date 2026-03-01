@@ -1,20 +1,15 @@
-from . import rest
-from .rest import (
-    HTTPConfig,
+from .config import HTTPConfig
+from .connector import (
     HTTPConnector,
     get_rest_session,
     request_rest,
     test_rest_connection,
 )
-from .soap import SOAPConfig, SOAPConnector
 
 __all__ = [
     "HTTPConfig",
-    "SOAPConfig",
     "HTTPConnector",
-    "SOAPConnector",
     "get_rest_session",
     "request_rest",
     "test_rest_connection",
-    "rest",
 ]

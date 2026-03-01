@@ -1,9 +1,9 @@
 from typing import Any
 
-from ..._config import load_connection_config
-from ..._logging import get_logger, redact_config
-from ..base_connector import BaseConnector
-from ..data_contract import IngestedItem, IngestionResult
+from ...._config import load_connection_config
+from ...._logging import get_logger, redact_config
+from ...base_connector import BaseConnector
+from ...data_contract import IngestedItem, IngestionResult
 from .config import SOAPConfig
 
 
@@ -29,7 +29,7 @@ class SOAPConnector(BaseConnector):
             },
         )
         self.config = SOAPConfig.model_validate(merged_config)
-        self.logger = get_logger("sources.http.soap_connector")
+        self.logger = get_logger("sources.http.soap.connector")
         self._client = None
 
     def connect(self) -> None:

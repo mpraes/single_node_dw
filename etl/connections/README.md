@@ -128,7 +128,7 @@ connector.close()
 SOAP connector example:
 
 ```python
-from connections.sources.http.soap_connector import SOAPConnector
+from connections.sources.http.soap.connector import SOAPConnector
 
 connector = SOAPConnector(
   wsdl_url="https://example.com/service?wsdl",

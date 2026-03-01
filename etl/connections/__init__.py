@@ -7,7 +7,7 @@ from sqlalchemy.engine import Engine
 from ._engine_cache import dispose_all_engines
 from ._session_cache import close_all_sessions
 from .dw_destination import get_dw_engine, test_dw_connection
-from .sources.http.rest import get_rest_session, request_rest, test_rest_connection
+from .sources.http import get_rest_session, request_rest, test_rest_connection
 from .sources.nosql.cassandra import get_cassandra_session, test_cassandra_connection
 from .sources.nosql.neo4j import get_neo4j_driver, test_neo4j_connection
 from .sources.factory import create_connector, load_connector_config
